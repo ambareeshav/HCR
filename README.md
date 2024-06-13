@@ -14,6 +14,7 @@ The 'Dataset-Sample.py' does what it says, since I made this project in VScode i
 The best I was able to achieve after some trial and error with layers and filter sizes was a accuracy of 0.987 and a loss of 0.0754, 
 since this was only an introduction to the vsat field of deep learning and AI I have not spent much time tweaking parameters for better accuracy and loss.
 
+![Prediction](https://github.com/ambareeshav/Handwritten-character-recog/assets/126247692/a34f8699-638a-4cdb-a10e-c3deaa26d06d)
 ![model loss3](https://github.com/ambareeshav/HCR/assets/126247692/379958e6-23ba-4333-86b5-f461b766f385) 
 ![model accuracy3](https://github.com/ambareeshav/HCR/assets/126247692/d723e638-5973-4895-9631-a9b6629de816)
 
