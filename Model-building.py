@@ -1,17 +1,17 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt # type: ignore
-import cv2 # type: ignore
-from sklearn.model_selection import train_test_split # type: ignore
-from sklearn.utils import shuffle # type: ignore
-from keras.models import Sequential # type: ignore
-from keras.layers import Dense, Flatten, Conv2D, MaxPool2D, Dropout # type: ignore
-import tensorflow as tf # type: ignore
-from tensorflow.keras.optimizers import SGD # type: ignore
-from keras import optimizers # type: ignore
-from keras.callbacks import ReduceLROnPlateau, EarlyStopping # type: ignore
-from tensorflow.keras.utils import to_categorical # type: ignore
-from keras.callbacks import EarlyStopping, ModelCheckpoint # type: ignore
+import matplotlib.pyplot as plt 
+import cv2 
+from sklearn.model_selection import train_test_split 
+from sklearn.utils import shuffle 
+from keras.models import Sequential 
+from keras.layers import Dense, Flatten, Conv2D, MaxPool2D, Dropout 
+import tensorflow as tf 
+from tensorflow.keras.optimizers import SGD 
+from keras import optimizers 
+from keras.callbacks import ReduceLROnPlateau, EarlyStopping 
+from tensorflow.keras.utils import to_categorical 
+from keras.callbacks import EarlyStopping, ModelCheckpoint 
 
 my_data = pd.read_csv('D:\Projects\DL FINAL\Data/A_Z Handwritten Data.csv').astype('float32')
 my_frame = pd.DataFrame(my_data)
@@ -31,14 +31,6 @@ word_dict = {
 }
 
 shuff = shuffle(x_train[:100])
-"""fig, ax = plt.subplots(3, 3, figsize = (15, 15))
-axes = ax.flatten()
-
-plt.title("Random images from dataset")
-for i in range(9):
-    shu = cv2.threshold(shuff[i], 30, 200, cv2.THRESH_BINARY)
-    axes[i].imshow(np.reshape(shuff[i], (28, 28)), cmap = 'Greys')
-plt.show()"""
 
 x_train = x_train.reshape(x_train.shape[0], x_train.shape[1], x_train.shape[2], 1)
 print("New shape of train data:", x_train.shape)
@@ -73,8 +65,6 @@ hcr_dl_model.add(Dense(26, activation = "softmax"))
 
 hcr_dl_model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
-"""es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=20, min_delta=0.001) 
-mc = ModelCheckpoint('best_model_esmc.keras', monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')"""
 
 history = hcr_dl_model.fit(x_train, categorical_train, epochs = 4, validation_data = (x_test, categorical_test))
 
@@ -97,15 +87,3 @@ plt.plot(history.history['val_accuracy'], label='test')
 plt.legend()
 plt.title("Model Accuracy")
 plt.show()
-
-"""fig, axes = plt.subplots(3, 3, figsize = (12, 15))
-axes = axes.flatten()
-
-for i, ax in enumerate(axes):
-    img = np.reshape(x_test[i], (28, 28))
-    ax.imshow(img, cmap = 'Greys')
-    
-    pred = word_dict[np.argmax(categorical_test[i])]
-    ax.set_title("Prediction: " + pred, fontsize = 20, fontweight = 'bold', color = 'red')
-    ax.grid()
-plt.show()"""

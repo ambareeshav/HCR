@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt # type: ignore
-import cv2 # type: ignore
-from sklearn.model_selection import train_test_split # type: ignore
-from sklearn.utils import shuffle # type: ignore
-from tensorflow.keras.utils import to_categorical # type: ignore
-from keras.models import load_model # type: ignore
+import matplotlib.pyplot as plt 
+import cv2 
+from sklearn.model_selection import train_test_split 
+from sklearn.utils import shuffle 
+from tensorflow.keras.utils import to_categorical 
+from keras.models import load_model 
 
 my_data = pd.read_csv('D:\Projects\DL FINAL\Data/A_Z Handwritten Data.csv').astype('float32')
 my_frame = pd.DataFrame(my_data)
